@@ -1,0 +1,47 @@
+﻿@model aplicacionesdecontactos.Models.contacto
+@{
+
+}
+
+
+<div>
+    <h3>
+        Aqui puede agregar un usuario
+    </h3>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<form>
+
+    <div class="mb-3">
+
+        <input placeholder="Nombre" @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+
+    </div>
+
+    <br />
+
+    <div class="mb-3">
+
+        <input placeholder="Direccion" @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <br />
+
+    <div class="mb-3">
+
+        <input placeholder="Telefono" @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+}
+

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<aplicacionesdecontactos.Models.contacto>
+
+<p>
+    <a href="~/Home/crear" type="button" class="btn btn-primary"> Crear Nuevo Contacto</a>
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Direccion
+        </th>
+        <th>
+            Telefono
+        </th>
+        <th>
+            Opciones
+        </th>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            
+            <td>
+                @item.id
+            </td>
+            <td>
+                @item.Nombre
+            </td>
+            <td>
+                @item.Direccion
+            </td>
+
+            <td>
+                @item.Telefono
+            </td>
+
+            <td>
+
+                <button class="btn btn-success">
+                    @Html.ActionLink("Editar", "Editar", new { id = item.id })
+                </button>
+
+             
+                    <input onclick="FuncionEliminar(@item.id)" type="button" value="Eliminar" class="btn btn-danger btn-group-sm" />
+           
+
+            </td>
+</tr>
+}
+
+</table>
+
+
+    <script>
+    function FuncionEliminar(id)
+    {
+        url = "@Url.Content("~/Home/eliminar/")" + id;
+        $.post(url, function (data) {
+            if (data == "1") {
+                document.location.href = "@Url.Content("~/Home/eliminar")";
+            };
+        });
+    }
+</script>
